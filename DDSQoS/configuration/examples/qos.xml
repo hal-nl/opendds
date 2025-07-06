@@ -1,0 +1,49 @@
+<!-- 
+OpenDDS Configuration Default file as per version 3.8.
+
+This file can be used as an example to change the QoS of the entity in runtime in your 
+own OpenDDS applications.
+
+-->
+<!-- 
+  This part is the default for the OpenDDS QoS:
+  For more information about OpenDDS QoS (Quality of Service) see Chapter 3 of the OpenDDS developers guide:
+  "http://download.ociweb.com/OpenDDS/OpenDDS-latest.pdf". 
+  The other OpenDDS documents can be found here: http://opendds.org/documents/ 
+-->
+<qos  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="http://www.ates.ws/schema/opendds/qos/3.8/qos_configuration.xsd"
+      version="3.8">
+    <!--  Default topic QoS configuration. Can be used to change the QoS of the entity in runtime
+          in your OpenDDS applications. -->
+    <topic>
+        <history>
+            <kind>KEEP_ALL_HISTORY_QOS</kind>
+            <depth>10</depth>
+        </history>
+        <durability>
+            <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+        </durability>
+    </topic>
+    
+    <datawriter>
+        <history>
+            <kind>KEEP_ALL_HISTORY_QOS</kind>
+            <depth>10</depth>
+        </history>
+        <durability>
+            <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+        </durability>
+    </datawriter>
+    
+    <datareader>
+        <history>
+            <kind>KEEP_ALL_HISTORY_QOS</kind>
+            <depth>10</depth>
+        </history>
+        <durability>
+            <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+        </durability>
+    </datareader>
+    
+</qos>

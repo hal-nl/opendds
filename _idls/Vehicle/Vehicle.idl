@@ -1,0 +1,93 @@
+/*
+ * File:   Vehicle.idl
+ *
+ * This IDL represents a Vehicle that can send data to other Vehicles
+ * and receive data from other Vehicles.
+ *
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
+ *
+ */
+
+#ifdef VEHICLEIDL_HPP
+  namespace VEHICLEIDL
+#else // IDL
+  module Vehicle
+#endif
+{
+  /** @brief Domain of this IDL */
+  const long DOMAIN = 106;
+
+  /** @brief Domain of this IDL */
+  const long DOMAIN_MAX = 230;
+
+  /** @brief Version of this IDL */
+  const string  VERSION_NUMBER = "1.0.0.0";
+
+  /** @brief All Topics used in Vehicle */
+  const string  TOPIC_DATA  = "VEHICLE.DATA";
+  const string  TOPIC_RELAY = "VEHICLE.RELAY";
+
+  /** @brief Vehicle types*/
+
+  const long VEHICLE_NAME_LEN   = 40;
+
+  const long VEHICLE_TYPE_COUNT = 11;
+  enum VehicleEnum {Undefined, Airplane, Bicycle, Boat, Bus, Car, Helicopter, Motorcycle, Train, Truck, Van};
+
+  const string VEHICLE_UNDEFINED  = "Undefined";
+  const string VEHICLE_AIRPLANE   = "Airplane";
+  const string VEHICLE_BICYCLE    = "Bicycle";
+  const string VEHICLE_BOAT       = "Boat";
+  const string VEHICLE_BUS        = "Bus";
+  const string VEHICLE_CAR        = "Car";
+  const string VEHICLE_HELICOPTER = "Helicopter";
+  const string VEHICLE_MOTORCYCLE = "Motorcycle";
+  const string VEHICLE_TRAIN      = "Train";
+  const string VEHICLE_TRUCK      = "Truck";
+  const string VEHICLE_VAN        = "Van";
+
+
+#ifndef VEHICLEIDL_HPP
+@topic
+#endif
+  struct Data
+  {
+  #ifndef VEHICLEIDL_HPP
+  @key
+  #endif
+    long      index;
+    long      type;
+    long      ip_port;
+    long      ip;
+    float     velocity;
+    float     acceleration;
+    float     latitude;
+    float     longitude;
+    float     altitude;
+    char      name[VEHICLE_NAME_LEN];
+    string    uuid;
+  };
+
+#ifndef VEHICLEIDL_HPP
+@topic
+#endif
+  struct Relay
+  {
+  #ifndef VEHICLEIDL_HPP
+  @key
+  #endif
+    long      index;
+    long      type;
+    long      ip_port;
+    long      ip;
+    float     velocity;
+    float     acceleration;
+    float     latitude;
+    float     longitude;
+    float     altitude;
+    char      name[VEHICLE_NAME_LEN];
+    string    uuid;
+  };
+
+};

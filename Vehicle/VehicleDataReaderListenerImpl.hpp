@@ -1,0 +1,46 @@
+/*
+ * File:   VehicleDataReaderListenerImpl.hpp
+ *
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
+ *
+ */
+
+
+#ifndef VEHICLEDATAREADERLISTENERIMPL_HPP
+#define VEHICLEDATAREADERLISTENERIMPL_HPP
+
+
+#include <ace/Global_Macros.h>
+
+#include <dds/DdsDcpsSubscriptionC.h>
+#include <dds/DCPS/LocalObject.h>
+#include <dds/DCPS/Definitions.h>
+
+#include "Vehicle_global.hpp"
+
+class VehicleDataReaderListenerImpl : public virtual OpenDDS::DCPS::LocalObject<DDS::DataReaderListener>
+{
+public:
+  VehicleDataReaderListenerImpl(CBF_VEHICLEDATA dataFunc, DDSCOMMON::OUTPUTFUNC debugFunc, int infolevel, bool monitor);
+  virtual ~VehicleDataReaderListenerImpl();
+
+  virtual void on_requested_deadline_missed(DDS::DataReader_ptr reader, const DDS::RequestedDeadlineMissedStatus& status);
+  virtual void on_requested_incompatible_qos(DDS::DataReader_ptr reader, const DDS::RequestedIncompatibleQosStatus& status);
+  virtual void on_sample_rejected(DDS::DataReader_ptr reader, const DDS::SampleRejectedStatus& status);
+  virtual void on_liveliness_changed(DDS::DataReader_ptr reader, const DDS::LivelinessChangedStatus& status);
+  virtual void on_subscription_matched(DDS::DataReader_ptr reader, const DDS::SubscriptionMatchedStatus& status);
+  virtual void on_sample_lost(DDS::DataReader_ptr reader, const DDS::SampleLostStatus& status);
+  virtual void on_data_available(DDS::DataReader_ptr reader);
+
+private:
+  CBF_VEHICLEDATA    _dataFunc;
+  DDSCOMMON::OUTPUTFUNC  _debugFunc;
+  int             _infolevel;
+  bool            _monitor;
+
+  void WriteOutput(const string& m);
+  void WriteOutput(int value);
+};
+
+#endif /* VEHICLEDATAREADERLISTENERIMPL_HPP */

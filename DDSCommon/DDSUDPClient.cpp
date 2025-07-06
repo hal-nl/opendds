@@ -1,0 +1,33 @@
+/*
+ * File:   DDSUDPClient.cpp
+ *
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
+ *
+ */
+
+#include "DDSUDPClient.hpp"
+
+namespace DDSCOMMON
+{
+  DDSUDPClient::DDSUDPClient(boost::asio::io_service& io_service, const std::string& host, const std::string& port)
+    : io_service_(io_service), socket_(io_service, udp::endpoint(udp::v4(), 0))
+  {
+    udp::resolver           resolver(io_service_);
+    udp::resolver::query    query   (udp::v4(), host, port);
+
+    udp::resolver::iterator iter = resolver.resolve(query);
+    endpoint_ = *iter;
+  }
+
+  DDSUDPClient::~DDSUDPClient()
+  {
+    socket_.close();
+  }
+
+  void DDSUDPClient::Send(const std::string& msg)
+  {
+    socket_.send_to(boost::asio::buffer(msg, msg.size()), endpoint_);
+  }
+
+};

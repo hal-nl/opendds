@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="qos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="participant">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="user_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="entity_factory">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autoenable_created_entities" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="topic">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="topic_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="durability">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="durability_service">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="service_cleanup_delay">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="history_kind" type="xs:string" />
+                    <xs:element name="history_depth" type="xs:unsignedByte" />
+                    <xs:element name="max_samples" type="xs:string" />
+                    <xs:element name="max_instances" type="xs:string" />
+                    <xs:element name="max_samples_per_instance" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="deadline">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="period">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="latency_budget">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="liveliness">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="lease_duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="reliability">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="max_blocking_time">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="destination_order">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="history">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="depth" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="resource_limits">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="max_samples" type="xs:string" />
+                    <xs:element name="max_instances" type="xs:string" />
+                    <xs:element name="max_samples_per_instance" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="transport_priority">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="lifespan">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ownership">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="publisher">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="presentation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="access_scope" type="xs:string" />
+                    <xs:element name="coherent_access" type="xs:boolean" />
+                    <xs:element name="ordered_access" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="group_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="entity_factory">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autoenable_created_entities" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="subscriber">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="presentation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="access_scope" type="xs:string" />
+                    <xs:element name="coherent_access" type="xs:boolean" />
+                    <xs:element name="ordered_access" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="group_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="entity_factory">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autoenable_created_entities" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datawriter">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="durability">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="durability_service">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="service_cleanup_delay">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="history_kind" type="xs:string" />
+                    <xs:element name="history_depth" type="xs:unsignedByte" />
+                    <xs:element name="max_samples" type="xs:string" />
+                    <xs:element name="max_instances" type="xs:string" />
+                    <xs:element name="max_samples_per_instance" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="deadline">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="period">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="latency_budget">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="liveliness">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="lease_duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="reliability">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="max_blocking_time">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:unsignedByte" />
+                          <xs:element name="nanosec" type="xs:unsignedInt" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="destination_order">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="history">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="depth" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="resource_limits">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="max_samples" type="xs:string" />
+                    <xs:element name="max_instances" type="xs:string" />
+                    <xs:element name="max_samples_per_instance" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="transport_priority">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="lifespan">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="user_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ownership">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ownership_strength">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="writer_data_life_cycle">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autodispose_unregistered_instances" type="xs:boolean" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datareader">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="durability">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="deadline">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="period">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="latency_budget">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="liveliness">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="lease_duration">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="reliability">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="max_blocking_time">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="destination_order">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="history">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                    <xs:element name="depth" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="resource_limits">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="max_samples" type="xs:string" />
+                    <xs:element name="max_instances" type="xs:string" />
+                    <xs:element name="max_samples_per_instance" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="user_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ownership">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="kind" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="time_based_filter">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="minimum_separation">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="reader_data_lifecycle">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autopurge_nowriter_samples_delay">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="autopurge_disposed_samples_delay">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="sec" type="xs:string" />
+                          <xs:element name="nanosec" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:decimal" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

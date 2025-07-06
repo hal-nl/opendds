@@ -1,0 +1,37 @@
+<!--
+Configuration Default file as per version V 1.0.0.0
+
+This file can be used to set the parameters of the DK modules at startup.
+For the OpenDDS settings see the OpenDDS Configuration settings.
+-->
+<dds>
+  <!-- This contains all the DK configurations settings -->
+  <global>
+    <!-- Contains global settings -->
+    <!-- TODO IMPLEMENT -->
+  </global>
+
+  <modules>
+
+    <vehicle>
+      <!--  QoS file contains the name of the XML file with the OpenDDS QOS settings.
+        The settings apply to all the topics. -->
+      <ddsqos>VehicleQoS.xml</ddsqos>
+
+      <publisher>
+        <!-- Contains Vehicle Publisher settings -->
+        <data>
+          <infolevel>1</infolevel> <!-- Infolevel determines the level of output when running the module -->
+        </data>
+      </publisher>
+      <subscriber>
+        <!-- Contains Vehicle Subscriber settings -->
+        <data>
+          <infolevel>1</infolevel> <!-- Infolevel determines the level of output when running the module -->
+        </data>
+      </subscriber>
+    </vehicle>
+
+  </modules>
+
+</dds>

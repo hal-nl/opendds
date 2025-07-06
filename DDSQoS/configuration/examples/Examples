@@ -1,0 +1,36 @@
+In the main function, call:
+========================================================================================================================
+
+1] Include correct header: #include "ddsqos.hpp"
+
+2]
+// --------------------------------------------------------------------------
+// Get Configurations from argument list
+// --------------------------------------------------------------------------
+map<string, string> arguments;
+/*int count = */ ::GetApplicationArguments(argc, const_cast<const char**>(argv), arguments);
+
+DDSCommonConfiguration qosconfiguration = DDSCommonConfiguration();
+if (arguments.find("qosconfig") != arguments.end()) qosconfiguration.XMLLoad(arguments["qosconfig"]);
+qosconfiguration.
+  
+========================================================================================================================
+Then the "qosconfiguration" can be used to get the settings from a configuration file.
+========================================================================================================================
+i.e. The individual topic's QoS values can then be set via: 
+
+topic_qos.reliability.max_blocking_time.sec = qosconfiguration.XMLReadLong("qos.topic.reliability.max_blocking_time.sec");
+
+========================================================================================================================
+i.e. All the topic's QoS values in the configuration file can then be set via: 
+
+qosconfiguration.SetTopicQosFromXML(/*DDS::Topic_var&*/ topic, /*DDS::TopicQos& */ topic_qos);
+
+========================================================================================================================
+
+
+//cout << "topic::reliability.max_blocking_time.sec:" << topic_qos. reliability.max_blocking_time.sec << endl;
+//topic_qos.reliability.max_blocking_time.sec = 30;
+//cout << "topic::reliability.max_blocking_time.sec:" << topic_qos. reliability.max_blocking_time.sec << endl;
+
+

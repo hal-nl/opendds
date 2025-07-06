@@ -1,0 +1,7 @@
+# Dependencies
+
+OpenDDS:
+
+This project uses [OpenDDS](https://opendds.org), licensed under the OpenDDS  License.
+
+See the `LICENSES/OpenDDS.txt` file for details.
