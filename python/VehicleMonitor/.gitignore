@@ -1,0 +1,13 @@
+build/*
+dist/*
+Doxygen/*
+htmlcov/*
+.coverage
+__pycache__
+__pycache__/*
+.pytest_cache
+*.pyc
+.vs/*
+.vscode/*
+*.lnt
+*.zip
