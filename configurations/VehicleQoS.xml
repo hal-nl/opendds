@@ -1,0 +1,20 @@
+<!-- OpenDDS Configuration Default file as per version 3.16. -->
+<qos  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.16" xsi:noNamespaceSchemaLocation="">
+  <datareader>
+    <durability>
+      <!-- Request the history of published data -->
+      <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+    </durability>
+  </datareader>
+  <datawriter>
+    <durability>
+      <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+    </durability>
+    <history>
+      <!-- Keep a history (maximum 3) of published data. -->
+      <kind>KEEP_LAST_HISTORY_QOS</kind>
+      <depth>1</depth>
+    </history>
+  </datawriter>
+
+</qos>
