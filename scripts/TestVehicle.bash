@@ -22,4 +22,5 @@
   --ORBLogFile=TestVehicle.log \
   --ddsconfig=./VehicleDDS.xml \
   --monitor=false \
-  $1 $2 $3
+  $1 $2 $3  &
+echo $! >> .pid

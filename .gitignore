@@ -1,1 +1,4 @@
 .vscode
+build/*
+_idls/Vehicle/generated/*
+python/VehicleMonitor/_venv/*

@@ -1,0 +1,242 @@
+{
+  "__comment": {
+    "1": "This JSON file contains all the default values of all of the OpenDDS entities' QoS'es.",
+    "2": "You can use this file as example and create your own configuration file from it."
+  },
+  
+  "domainparticipant" : {
+    "__comment": "This are the QoS default values of the domainparticipant",
+    
+    "user_data" :   {
+      "value" : ""
+    },
+    "entity_factory" : {
+      "autoenable_created_entities" : "true"
+    }
+  },
+
+  "topic": {
+    "__comment": "This are the QoS default values of the topic",
+    
+    "topic_data" : {
+      "value" : ""
+    },
+    
+    "durability" : {
+      "kind" : "VOLATILE_DURABILITY_QOS",
+      "service_cleanup_delay" : {
+        "sec" : 0,
+        "nanosec" : 0
+      }
+    },
+
+    "durability_service" : {
+      "service_cleanup_delay" : {
+        "sec" : 0,
+        "nanosec" : 0
+      },
+      
+      "history_kind": "KEEP_LAST_HISTORY_QOS",
+      "history_depth": 1,
+      
+      "max_samples" : "LENGTH_UNLIMITED",
+      "max_instances" : "LENGTH_UNLIMITED" ,
+      "max_samples_per_instance" : "LENGTH_UNLIMITED" 
+    },
+
+    "deadline": {
+      "period": {
+        "sec":  "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+    
+    "latency_budget": {
+      "duration": {
+        "sec":  "DURATION_ZERO_SEC",
+        "nanosec": "DURATION_ZERO_NSEC"
+      }
+    },
+    
+    "liveliness": {
+      "kind": "AUTOMATIC_LIVELINESS_QOS",
+      "lease_duration": {
+        "sec":  "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+
+    "reliability": {
+      "kind": "BEST_EFFORT_RELIABILITY_QOS",
+      "max_blocking_time": {
+        "sec":  "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+
+    "destination_order": {
+      "kind": "BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS"
+    },
+
+    "history": {
+      "kind": "KEEP_LAST_HISTORY_QOS",
+      "depth": 1
+    },
+
+    "resource_limits": {
+      "max_samples" : "LENGTH_UNLIMITED",
+      "max_instances": "LENGTH_UNLIMITED", 
+      "max_samples_per_instance": "LENGTH_UNLIMITED"
+    },
+
+    "transport_priority": {
+      "value" : 0
+    },
+
+    "lifespan": {
+      "duration" : {
+        "sec": "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+    
+    "ownership": {
+      "kind": "SHARED_OWNERSHIP_QOS"
+    }
+  },
+  
+  "publisher" : {
+    "presentation": {
+      "access_scope": "INSTANCE_PRESENTATION_QOS",
+      "coherent_access": 0,
+      "ordered_access": 0
+    },
+    "partition": {
+      "name": []
+    },
+    "group_data": {
+      "value": ""
+    },
+    "entity_factory": {
+      "autoenable_created_entities": "true"
+    }
+  },
+
+
+  "subscriber" : {
+    "presentation": {
+      "access_scope": "INSTANCE_PRESENTATION_QOS",
+      "coherent_access": 0,
+      "ordered_access": 0
+    },
+    "partition": {
+      "name": []
+    },
+    "group_data": {
+      "value": ""
+    },
+    "entity_factory": {
+      "autoenable_created_entities": "true"
+    }
+  },
+  
+  
+  "datawriter": {
+    "durability" : {
+      "kind" : "VOLATILE_DURABILITY_QOS",
+      "service_cleanup_delay" : {
+        "sec" : 0,
+        "nanosec" : 0
+      }
+    },
+
+    "durability_service" : {
+      "service_cleanup_delay" : {
+        "sec" : 0,
+        "nanosec" : 0
+      },
+      
+      "history_kind": "KEEP_LAST_HISTORY_QOS",
+      "history_depth": 1,
+      
+      "max_samples" : "LENGTH_UNLIMITED",
+      "max_instances" : "LENGTH_UNLIMITED" ,
+      "max_samples_per_instance" : "LENGTH_UNLIMITED" 
+    },
+
+    "deadline": {
+      "period": {
+        "sec":  "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+    
+    "latency_budget": {
+      "duration": {
+        "sec":  "DURATION_ZERO_SEC",
+        "nanosec": "DURATION_ZERO_NSEC"
+      }
+    },
+    
+    "liveliness": {
+      "kind": "AUTOMATIC_LIVELINESS_QOS",
+      "lease_duration": {
+        "sec":  "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+
+    "reliability": {
+      "kind": "BEST_EFFORT_RELIABILITY_QOS",
+      "max_blocking_time": {
+        "sec":  "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+
+    "destination_order": {
+      "kind": "BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS"
+    },
+
+    "history": {
+      "kind": "KEEP_LAST_HISTORY_QOS",
+      "depth": 1
+    },
+
+    "resource_limits": {
+      "max_samples" : "LENGTH_UNLIMITED",
+      "max_instances": "LENGTH_UNLIMITED", 
+      "max_samples_per_instance": "LENGTH_UNLIMITED"
+    },
+
+    "transport_priority": {
+      "value" : 0
+    },
+
+    "lifespan": {
+      "duration" : {
+        "sec": "DURATION_INFINITY_SEC",
+        "nanosec": "DURATION_INFINITY_NSEC"
+      }
+    },
+   
+    "user_data" :   {
+      "value" : ""
+    },
+
+    "ownership": {
+      "kind": "SHARED_OWNERSHIP_QOS"
+    },
+    
+    "ownership_strngth": {
+      "value": 0
+    },
+    
+    "writer_data_lifecycle": {
+      "autodispose_unregistered_instances": 1
+    }
+  }
+  
+  
+  
+}

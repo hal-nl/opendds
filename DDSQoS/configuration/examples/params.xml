@@ -1,0 +1,7 @@
+<params>
+  <server>127.0.0.1</server>
+  <port>32000</port>
+  <buflen>512</buflen>
+  <filter>true</filter>
+</params>
+

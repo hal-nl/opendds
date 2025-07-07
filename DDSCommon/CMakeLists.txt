@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.22)
 
-project(TestVehicle)
+project(DDSCommon)
 
 # #################################################################################################
 # ADD MACROS
@@ -12,13 +12,12 @@ add_definitions(
 # #################################################################################################
 # SET C++ FLAGS
 # #################################################################################################
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated ")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fopenmp")
 
 # #################################################################################################
 # CXX Standard
 # #################################################################################################
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
 
 # #################################################################################################
@@ -26,12 +25,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
 # #################################################################################################
 find_package(fmt REQUIRED)
 
-
 # #################################################################################################
 # Find Boost
 # #################################################################################################
 find_package(Boost COMPONENTS
-  regex system filesystem date_time thread program_options REQUIRED
+  regex system filesystem date_time REQUIRED
 )
 include_directories(
    ${Boost_INCLUDE_DIRS}
@@ -41,21 +39,34 @@ include_directories(
 
 
 # #################################################################################################
-# CREATE EXECUTABLE
+# DECLARE ALL THE USED SOURCES
 # #################################################################################################
 set(SOURCES
-    ${PROJECT_NAME}.cpp
-    ../../DDSCommon/DDSCommon.cpp
-    ../../DDSCommon/DDSHelper.cpp
+    DDSCommon.cpp
+    DDSInit.cpp
+    DDSConfiguration.cpp
+    DDSHelper.cpp
+    DDSUDPClient.cpp
+    QoSConfigurationDatareader.cpp
+    QoSConfigurationDatawriter.cpp
+    QoSConfigurationParticipant.cpp
+    QoSConfigurationPublisher.cpp
+    QoSConfigurationSubscriber.cpp
+    QoSConfigurationTopic.cpp
+    XMLConfiguration.cpp
 )
-add_executable( ${PROJECT_NAME}
-    ${SOURCES}
-)
+
+# #################################################################################################
+# CREATE STATIC / SHARED LIBRARIES
+# #################################################################################################
+add_library( ${PROJECT_NAME}Static STATIC ${SOURCES})
+add_library( ${PROJECT_NAME} SHARED ${SOURCES})
+
 
 # #################################################################################################
 # DISTRIBUTED FILES
 # #################################################################################################
-file(COPY ../scripts/TestVehicle.bash DESTINATION ${CMAKE_BINARY_DIR}/bin/)
+file(COPY ./configuration/DDSConfiguration.xml DESTINATION  ${CMAKE_BINARY_DIR}/bin/)
 
 # #################################################################################################
 # LINK LIBRARIES TO TARGET
@@ -64,7 +75,6 @@ target_link_libraries(${PROJECT_NAME}
   ${Boost_LIBRARIES}
   dl
   rt
-  pthread
-  ${DDS_LIBRARIES}
   fmt
+  ${DDS_LIBRARIES}
 )

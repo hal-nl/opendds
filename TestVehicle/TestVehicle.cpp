@@ -20,9 +20,9 @@
 
 #include <boost/program_options.hpp>
 
-#include "../../DDSCommon/DDSCommon.hpp"
-#include "../../DDSCommon/DDSHelper.hpp"
-#include "../../_idls/Vehicle/VehicleIdl.hpp"
+#include "../DDSCommon/DDSCommon.hpp"
+#include "../DDSCommon/DDSHelper.hpp"
+#include "../_idls/Vehicle/VehicleIdl.hpp"
 #include "../Vehicle/Vehicle_global.hpp"
 
 using namespace std;
