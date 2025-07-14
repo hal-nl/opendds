@@ -28,7 +28,7 @@ You will get a similar output as the following:
    TAO (141227|141227) - Initializing the orb-specific services
 ```
 
-Now run three vehicles by issueing the following commands in a separate terminal:
+Now run three vehicles by issuing the following commands in a separate terminal:
 
 > `./TestVehicle.bash --name=A`
 > `./TestVehicle.bash --name=B`
