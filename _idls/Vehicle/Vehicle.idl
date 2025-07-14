@@ -1,11 +1,11 @@
 /*
  * File:   Vehicle.idl
- * Author: Haluk Ates
  *
  * This IDL represents a Vehicle that can send data to other Vehicles
  * and receive data from other Vehicles.
  *
- * Created 2021-04-01
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  *
  */
 

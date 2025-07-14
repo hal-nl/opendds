@@ -1,9 +1,9 @@
 /*
  * File:   VehicleDataWriterListenerImpl.hpp
  *
- * Author: Haluk Ates
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  *
- * Created 2021-04-01
  */
 
 

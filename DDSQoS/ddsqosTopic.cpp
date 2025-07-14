@@ -1,8 +1,8 @@
 /*
  * File:   ddsqosTopic.cpp
- * Author: Haluk Ates
  *
-* Created on July 2025
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  *
  */
 

@@ -1,13 +1,12 @@
 /*
  * File:   VehicleDataReaderListenerImpl.cpp
  *
- * Author: Haluk Ates
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  *
- * Created 2021-04-01
  */
 
 #include <iostream>
-
 
 #include <ace/Log_Msg.h>
 #include <ace/OS_NS_stdlib.h>

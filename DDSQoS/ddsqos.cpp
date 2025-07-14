@@ -1,10 +1,11 @@
 /*
  * File:   ddsqos.cpp
- * Author: Haluk Ates
  *
  * See also <boost/property_tree/xml_parser.hpp> for examples.
  *
-* Created on July 2025
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
+ *
  */
 
 #include <cstdlib>

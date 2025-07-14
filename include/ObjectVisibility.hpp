@@ -1,6 +1,5 @@
 /*
  * File:   ObjectVisibility.hpp
- * Author: Haluk Ates
  *
  * C++ visibility support: It will hide most of the ELF symbols which would
  * have previously (and unnecessarily) been public.
@@ -11,7 +10,9 @@
  *
  * $ nm -C -D <nameof.so>
  *
-* Created on July 2025
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
+ *
  */
 
 #ifndef OBJECTVISIBILITY_HPP

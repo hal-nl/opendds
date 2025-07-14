@@ -1,9 +1,9 @@
 /*
  * File:   Vehicle_global.hpp
  *
- * Author: Haluk Ates
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  *
- * Created 2021-04-01
  */
 
 #ifndef VEHICLE_GLOBAL_HPP
@@ -18,8 +18,7 @@
   DLL_LOCAL void OnDLLInit(void) __attribute__((constructor));
   DLL_LOCAL void OnDLLTerm(void) __attribute__((destructor));
 #else
-  // Windows???
-
+  // Windows
 #endif
 
 

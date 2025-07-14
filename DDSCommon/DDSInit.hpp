@@ -1,8 +1,8 @@
 /*
- * File:   DDSInit.hpp
- * Author: haluk ates
+ * File: DDSInit.hpp
  *
-* Created on July 2025
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  */
 
 #ifndef DDSINIT_HPP

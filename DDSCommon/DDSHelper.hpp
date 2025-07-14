@@ -1,7 +1,8 @@
 /*
  * File:   DDSHelper.hpp
  *
-* Created on July 2025
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
  */
 
 #ifndef DDSHELPER_HPP

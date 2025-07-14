@@ -1,10 +1,10 @@
 /*
  * File:   DDSIPC.cpp
- * Author: haluk ates
  *
-* Created on July 2025
+ * Copyright (c) 2025 Haluk Ates
+ * Licensed under the MIT License.
+ *
  */
-#include "windows.h"
 
 #include <vector>
 #include <map>

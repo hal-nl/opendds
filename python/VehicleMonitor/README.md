@@ -12,4 +12,3 @@ vehicles (generally speaking between objects, but for demo purposes named to veh
 The python script uses a shared library: `libVehicle.so`.
 
 This library `libVehicle.so` contains the interface to send and receive messages for communications via OpenDDS.
-
