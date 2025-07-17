@@ -30,6 +30,7 @@
 #include <cctype>
 #include <random>
 #include <chrono>
+#include <mutex>
 #include <fmt/core.h>
 
 using namespace std;

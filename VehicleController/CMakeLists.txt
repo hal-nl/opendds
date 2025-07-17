@@ -1,69 +1,69 @@
 cmake_minimum_required (VERSION 3.22)
 
-project(TestVehicle)
+project(VehicleController)
 
 # #################################################################################################
 # ADD MACROS
 # #################################################################################################
 add_definitions(
-  -DLINUX
+   -DEIGEN_MALLOC_ALREADY_ALIGNED=0
+   -DLINUX
 )
 
 # #################################################################################################
 # SET C++ FLAGS
 # #################################################################################################
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fopenmp")
-
-# #################################################################################################
-# CXX Standard
-# #################################################################################################
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
-
-# #################################################################################################
-# Find fmt
-# #################################################################################################
-find_package(fmt REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated")
 
 
 # #################################################################################################
 # Find Boost
 # #################################################################################################
 find_package(Boost COMPONENTS
-  regex system filesystem date_time thread program_options REQUIRED
+  program_options regex system filesystem date_time REQUIRED
 )
 include_directories(
    ${Boost_INCLUDE_DIRS}
-   ${PROJECT_INCLUDE_VISIBILITY}
 )
 
+# #################################################################################################
+# Find OpenMP
+# #################################################################################################
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
 
-# #################################################################################################
-# CREATE EXECUTABLE
-# #################################################################################################
-set(SOURCES
-    ${PROJECT_NAME}.cpp
-    ../../DDSCommon/DDSCommon.cpp
-    ../../DDSCommon/DDSHelper.cpp
-)
-add_executable( ${PROJECT_NAME}
-    ${SOURCES}
-)
 
 # #################################################################################################
 # DISTRIBUTED FILES
 # #################################################################################################
-file(COPY ../scripts/TestVehicle.bash DESTINATION ${CMAKE_BINARY_DIR}/bin/)
+file(COPY resources/VehicleController.pause.json DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
+file(COPY resources/VehicleController.cfg        DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
+
+# #################################################################################################
+# CREATE EXECUTABLE
+# #################################################################################################
+set (SOURCES
+   vehicle_controller.cpp
+   vehicle_controller_run.cpp
+   vehicle_controller_notifiers.cpp
+   control_notifiers.cpp
+)
+add_executable(${PROJECT_NAME}
+   ${SOURCES}
+)
 
 # #################################################################################################
 # LINK LIBRARIES TO TARGET
 # #################################################################################################
 target_link_libraries(${PROJECT_NAME}
-  ${Boost_LIBRARIES}
-  dl
-  rt
-  pthread
-  ${DDS_LIBRARIES}
-  fmt
+   dl
+   rt
+   fmt
+   config++
+   ${Boost_LIBRARIES}
+   ${GCOV_LIB}
 )
