@@ -130,4 +130,4 @@ add_subdirectory(TestVehicle)
 # #############################################################################
 # Processor to control Vehicles
 # #############################################################################
-add_subdirectory(VehicleProcessor)
+add_subdirectory(VehicleController)

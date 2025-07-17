@@ -1,13 +1,13 @@
 /*
- * File:   vehicle_processor.hpp
+ * File:   vehicle_controller.hpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
  *
  */
 
-#ifndef VEHICLE_PROCESSOR_HPP_INCLUDED
-#define VEHICLE_PROCESSOR_HPP_INCLUDED
+#ifndef VEHICLE_CONTROLLER_INCLUDED
+#define VEHICLE_CONTROLLER_INCLUDED
 
 #include <unistd.h>
 #include <dlfcn.h>
@@ -46,14 +46,17 @@ string DecimalToCode64(size_t decimal);
 
 
 /**
- * @brief Run the application with correct parameters
+ * @brief Starts up a multi threaded application to control vehicles by
+ * sending them control commands via OpenDDS. The control commands
+ * can be activated by file notifications or OpenDDS subscription method
+ * to the proper Vehicle topics.
  *
  * @param argc : not used yet
  * @param argv : not used yet
  * @param cfg
  * @return int
  */
-int run_processor(int argc, char** argv, const Config& cfg);
+int run_controller(int argc, char** argv, const Config& cfg);
 
 
-#endif /* VEHICLE_PROCESSOR_HPP_INCLUDED */
+#endif /* VEHICLE_CONTROLLER_INCLUDED */

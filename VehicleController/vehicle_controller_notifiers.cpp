@@ -1,5 +1,5 @@
 /*
- * File:   vehicle_processor_notifiers.cpp
+ * File:   vehicle_controller_notifiers.cpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
@@ -8,7 +8,7 @@
 
 #include <sys/inotify.h>
 
-#include "vehicle_processor.hpp"
+#include "vehicle_controller.hpp"
 #include "control_notifiers.hpp"
 
 using namespace std;

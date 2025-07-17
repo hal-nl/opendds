@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.22)
 
-project(VehicleProcessor)
+project(VehicleController)
 
 # #################################################################################################
 # ADD MACROS
@@ -40,16 +40,16 @@ endif()
 # #################################################################################################
 # DISTRIBUTED FILES
 # #################################################################################################
-file(COPY resources/VehicleProcessor.pause.json DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
-file(COPY resources/VehicleProcessor.cfg        DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
+file(COPY resources/VehicleController.pause.json DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
+file(COPY resources/VehicleController.cfg        DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
 
 # #################################################################################################
 # CREATE EXECUTABLE
 # #################################################################################################
 set (SOURCES
-   vehicle_processor.cpp
-   vehicle_processor_run.cpp
-   vehicle_processor_notifiers.cpp
+   vehicle_controller.cpp
+   vehicle_controller_run.cpp
+   vehicle_controller_notifiers.cpp
    control_notifiers.cpp
 )
 add_executable(${PROJECT_NAME}
@@ -62,7 +62,6 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
    dl
    rt
-   pthread
    fmt
    config++
    ${Boost_LIBRARIES}

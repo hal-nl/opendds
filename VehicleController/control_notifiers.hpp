@@ -6,10 +6,10 @@
  *
  */
 
-#ifndef NOTIFIERS_RUN_HPP_INCLUDED
-#define NOTIFIERS_RUN_HPP_INCLUDED
+#ifndef CONTROL_NOTIFIERS_INCLUDED
+#define CONTROL_NOTIFIERS_INCLUDED
 
-#include "vehicle_processor.hpp"
+#include "vehicle_controller.hpp"
 
 /**
  * @brief Threaded notifier that looks for control files in the input_dir
@@ -25,4 +25,4 @@ int run_control_notifiers(
    int argc, char** argv,
    const string& input_dir, const string& extension, const string& output_dir);
 
-#endif /* NOTIFIERS_RUN_HPP_INCLUDED */
+#endif /* CONTROL_NOTIFIERS_INCLUDED */

@@ -1,5 +1,5 @@
 /*
- * File:   vehicle_processor.cpp
+ * File:   vehicle_controller.cpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
@@ -7,7 +7,7 @@
  */
 
 
-#include "vehicle_processor.hpp"
+#include "vehicle_controller.hpp"
 
 const string version_info = "1.0.0";
 
@@ -122,7 +122,7 @@ int main(int argc, char** argv)
 
          Config cfg;
          cfg.readFile(cfg_conf.c_str());
-         run_processor(argc, argv, cfg);
+         run_controller(argc, argv, cfg);
       }
       catch (const FileIOException &fioex)
       {

@@ -8,8 +8,8 @@
 
 #include <sys/inotify.h>
 
-#include "vehicle_processor.hpp"
-#include "vehicle_processor_notifiers.hpp"
+#include "vehicle_controller.hpp"
+#include "vehicle_controller_notifiers.hpp"
 
 using namespace rapidjson;
 namespace RJ=rapidjson;

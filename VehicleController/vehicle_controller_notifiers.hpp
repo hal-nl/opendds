@@ -1,15 +1,15 @@
 /*
- * File:   vehicle_processor_notifiers.hpp
+ * File:   vehicle_controller_notifiers.hpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
  *
  */
 
-#ifndef VEHICLE_PROCESSOR_NOTIFIERS_HPP_INCLUDED
-#define VEHICLE_PROCESSOR_NOTIFIERS_HPP_INCLUDED
+#ifndef VEHICLE_CONTROLLER_NOTIFIERS_INCLUDED
+#define VEHICLE_CONTROLLER_NOTIFIERS_INCLUDED
 
-#include "vehicle_processor.hpp"
+#include "vehicle_controller.hpp"
 
 #define MAX_EVENTS      1024                                         /* Max. number of events to process at one go */
 #define LEN_NAME        512                                          /* Assuming that the length of the filename won't exceed 512 bytes */
@@ -19,4 +19,4 @@
 
 int process_notifiers(int argc, char** argv, const Setting& notifiers, vector<std::thread>& run_threads);
 
-#endif /* VEHICLE_PROCESSOR_NOTIFIERS_HPP_INCLUDED */
+#endif /* VEHICLE_CONTROLLER_NOTIFIERS_INCLUDED */

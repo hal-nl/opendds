@@ -1,13 +1,13 @@
 /*
- * File:   vehicle_processor_run.cpp
+ * File:   vehicle_controller_run.cpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
  *
  */
 
-#include "vehicle_processor.hpp"
-#include "vehicle_processor_notifiers.hpp"
+#include "vehicle_controller.hpp"
+#include "vehicle_controller_notifiers.hpp"
 
 /**
  * @brief Run the processes from the definition in the configuration file
@@ -18,7 +18,7 @@
  * @param cfg
  * @return int
  */
-int run_processor(int argc, char** argv, const Config& cfg)
+int run_controller(int argc, char** argv, const Config& cfg)
 {
    vector<std::thread> run_threads_notifiers;
    const Setting& root = cfg.getRoot();
