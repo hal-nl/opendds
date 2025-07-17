@@ -143,9 +143,7 @@ int process_notifiers(int argc, char** argv, const Setting& settings, vector<std
                   appLogger("error","Notifier settings not complete.", mainThreadId);
                   continue;
                }
-               run_threads.emplace_back(std::thread(
-                     run_control_notifiers, argc, argv, input_dir, extension, output_dir)
-               );
+               run_threads.emplace_back(run_control_notifiers, argc, argv, input_dir, extension, output_dir);
                string threadId = DecimalToCode64( hasher(run_threads.back().get_id()) );
                appLogger("out  ","RunLogFile::Starting Notifier thread hash: " + threadId, mainThreadId);
             }
