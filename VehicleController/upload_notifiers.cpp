@@ -1,5 +1,5 @@
 /*
- * File:   control_notifiers.cpp
+ * File:   upload_notifiers.cpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
@@ -10,9 +10,6 @@
 
 #include "vehicle_controller.hpp"
 #include "vehicle_controller_notifiers.hpp"
-
-using namespace rapidjson;
-namespace RJ=rapidjson;
 
 
 /**
@@ -25,7 +22,7 @@ namespace RJ=rapidjson;
  * @param output_dir    Output directory of processed files
  * @return int
  */
-int run_control_notifiers( int argc, char** argv,
+int run_upload_notifiers( int argc, char** argv,
    const string& input_dir, const string& extension, const string& output_dir)
 {
    int length, fd, wd, i = 0;
@@ -91,38 +88,11 @@ int run_control_notifiers( int argc, char** argv,
 
                         try
                         {
+                           string contents = GetContents(infile);
 
-                           string jsondata = GetContents(infile);
-                           RJ::Document document;
-                           document.Parse(jsondata.c_str());
-                           if (document.IsObject())
-                           {
-                              string command("");
-                              // Process something
-                              // Get command
-                              RJ::Value::ConstMemberIterator itr;
-                              itr = document.FindMember("command");
-                              if (itr != document.MemberEnd())
-                              {
-                                 command = std::string(itr->value.GetString());
-                              }
-
-                              std::transform(command.begin(), command.end(), command.begin(),  [](unsigned char c) { return std::tolower(c); });
-                              if (command  == "kill")
-                              {
-                                 appLogger("info ", "Kill the vehicle", threadId);
-                                 // TODO: Implement
-                              }
-                              else if (command  == "pause")
-                              {
-                                 appLogger("info ", "Pause the vehicle", threadId);
-                                 // TODO: Implement
-                              }
-                              else
-                              {
-                                 appLogger("info ", "Unknown command: " + command, threadId);
-                              }
-                           }
+                           appLogger("info ", "Upload data to the vehicle", threadId);
+                           // TODO: Not implemented: Upload data to vehicle
+                           // Etc..
 
                            string message = "COMPLETE THE EVENT in: ";
                            message.append(infile);

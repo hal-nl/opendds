@@ -10,43 +10,9 @@
 
 #include "vehicle_controller.hpp"
 #include "control_notifiers.hpp"
+#include "upload_notifiers.hpp"
 
 using namespace std;
-
-/**
- * @brief Check if directories exist, else create
- *
- * @param dirlist : list of directories to check
- * @return int
- */
-int check_directories(const vector<string>& dirlist, const string& threadId)
-{
-   // -----------------------------------------------------------------
-   // Check input dir/ output dir and create if not exists
-   // -----------------------------------------------------------------
-   for(auto d : dirlist )
-   {
-      string fullPath = filesystem::path(d);
-      if (!filesystem::exists(fullPath))
-      {
-         // Folder does not exist, create it
-         if (filesystem::create_directories(fullPath))
-         {
-            appLogger("info ","Folder created successfully: " + fullPath, threadId);
-         }
-         else
-         {
-            appLogger("error","Failed to create folder: " + fullPath, threadId);
-            return -1;
-         }
-      }
-      else
-      {
-         appLogger("info ","Folder already exists: " + fullPath, threadId);
-      }
-   }
-   return 0;
-}
 
 
 /**
@@ -85,7 +51,7 @@ int process_notifiers(int argc, char** argv, const Setting& settings, vector<std
          }
          else
          {
-            if (service == "Control")
+            if ((service == "Control") || (service == "Upload"))
             {
                if (
                      !(setting.lookupValue("input_dir",   input_dir)     &&
@@ -144,6 +110,26 @@ int process_notifiers(int argc, char** argv, const Setting& settings, vector<std
                   continue;
                }
                run_threads.emplace_back(run_control_notifiers, argc, argv, input_dir, extension, output_dir);
+               string threadId = DecimalToCode64( hasher(run_threads.back().get_id()) );
+               appLogger("out  ","RunLogFile::Starting Notifier thread hash: " + threadId, mainThreadId);
+            }
+            else if (service == "Upload")
+            {
+               // ---------------------------------------------------------------------
+               // Only run thread if all of the expected fields are present.
+               // ---------------------------------------------------------------------
+               string input_dir, extension, output_dir;
+               if (!(
+                     setting.lookupValue("input_dir",         input_dir)        &&
+                     setting.lookupValue("extension",         extension)        &&
+                     setting.lookupValue("output_dir",        output_dir)
+                     )
+                  )
+               {
+                  appLogger("error","Notifier settings not complete.", mainThreadId);
+                  continue;
+               }
+               run_threads.emplace_back(run_upload_notifiers, argc, argv, input_dir, extension, output_dir);
                string threadId = DecimalToCode64( hasher(run_threads.back().get_id()) );
                appLogger("out  ","RunLogFile::Starting Notifier thread hash: " + threadId, mainThreadId);
             }

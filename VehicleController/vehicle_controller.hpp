@@ -43,6 +43,8 @@ using namespace libconfig;
 void appLogger(const string& typ, const string& msg, const string& threadId);
 string GetApplicationName(const char *name);
 string DecimalToCode64(size_t decimal);
+string GetContents(const string &fullFileName);
+int check_directories(const vector<string>& dirlist, const string& threadId);
 
 
 /**

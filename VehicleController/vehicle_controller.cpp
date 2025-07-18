@@ -21,6 +21,12 @@ void appLogger(const string& typ, const string& msg, const string& threadId)
    cout <<  logMessage << endl;
 }
 
+/**
+ * @brief Get the Application Name of the current application
+ *
+ * @param name
+ * @return string
+ */
 string GetApplicationName(const char *name)
 {
    std::lock_guard<std::mutex> lock(std::mutex);
@@ -29,7 +35,12 @@ string GetApplicationName(const char *name)
    return application_name;
 }
 
-
+/**
+ * @brief Decimal to hex code
+ *
+ * @param decimal
+ * @return string
+ */
 string DecimalToCode64(size_t decimal)
 {
    std::lock_guard<std::mutex> lock(std::mutex);
@@ -44,6 +55,63 @@ string DecimalToCode64(size_t decimal)
 
    return hexValue;
 }
+
+/**
+ * @brief Get the file contents
+ *
+ * @param fullFileName
+ * @return string
+ */
+string GetContents(const string &fullFileName)
+{
+   std::ifstream f(fullFileName.c_str());
+   if (f)
+   {
+      string data;
+      f.seekg(0, std::ios::end);
+      data.resize(f.tellg());
+      f.seekg(0);
+      f.read(data.data(), data.size());
+      return data;
+   }
+   return "";
+}
+
+/**
+ * @brief Check if directories exist, else create
+ *
+ * @param dirlist : list of directories to check
+ * @return int
+ */
+int check_directories(const vector<string>& dirlist, const string& threadId)
+{
+   // -----------------------------------------------------------------
+   // Check input dir/ output dir and create if not exists
+   // -----------------------------------------------------------------
+   for(auto d : dirlist )
+   {
+      string fullPath = filesystem::path(d);
+      if (!filesystem::exists(fullPath))
+      {
+         // Folder does not exist, create it
+         if (filesystem::create_directories(fullPath))
+         {
+            appLogger("info ","Folder created successfully: " + fullPath, threadId);
+         }
+         else
+         {
+            appLogger("error","Failed to create folder: " + fullPath, threadId);
+            return -1;
+         }
+      }
+      else
+      {
+         appLogger("info ","Folder already exists: " + fullPath, threadId);
+      }
+   }
+   return 0;
+}
+
 
 int main(int argc, char** argv)
 {

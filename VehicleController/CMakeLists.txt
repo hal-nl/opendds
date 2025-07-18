@@ -40,6 +40,7 @@ endif()
 # #################################################################################################
 # DISTRIBUTED FILES
 # #################################################################################################
+file(COPY resources/VehicleController.upload.ini DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
 file(COPY resources/VehicleController.pause.json DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
 file(COPY resources/VehicleController.cfg        DESTINATION ${CMAKE_BINARY_DIR}/bin/ )
 
@@ -51,6 +52,7 @@ set (SOURCES
    vehicle_controller_run.cpp
    vehicle_controller_notifiers.cpp
    control_notifiers.cpp
+   upload_notifiers.cpp
 )
 add_executable(${PROJECT_NAME}
    ${SOURCES}
