@@ -9,8 +9,6 @@
 #ifndef DDSCOMMON_HPP
 #define DDSCOMMON_HPP
 
-using namespace std;
-
 #define EXTERN_DLL_FUNC extern "C" DLL_PUBLIC
 
 // ------------------------------------------------------------------------------------------

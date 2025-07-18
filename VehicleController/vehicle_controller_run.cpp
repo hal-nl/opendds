@@ -6,8 +6,11 @@
  *
  */
 
-#include "vehicle_controller.hpp"
+#include "helper.hpp"
 #include "vehicle_controller_notifiers.hpp"
+
+using namespace std;
+using namespace libconfig;
 
 /**
  * @brief Run the processes from the definition in the configuration file
@@ -20,12 +23,12 @@
  */
 int run_controller(int argc, char** argv, const Config& cfg)
 {
-   vector<std::thread> run_threads_notifiers;
+   vector<thread> run_threads_notifiers;
    const Setting& root = cfg.getRoot();
 
    // Use hash and convert to string
-   std::hash<std::thread::id> hasher;
-   string mainThreadId = DecimalToCode64(hasher(std::this_thread::get_id()));
+   hash<thread::id> hasher;
+   string mainThreadId = DecimalToCode64(hasher(this_thread::get_id()));
 
    // -------------------------------------------------------------------------
    // Start notifiers threads

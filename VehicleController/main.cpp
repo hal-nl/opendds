@@ -1,5 +1,5 @@
 /*
- * File:   vehicle_controller.cpp
+ * File:   main.cpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
@@ -7,111 +7,13 @@
  */
 
 
-#include "vehicle_controller.hpp"
+#include "helper.hpp"
+#include "vehicle_controller_run.hpp"
+
+using namespace std;
+using namespace libconfig;
 
 const string version_info = "1.0.0";
-
-/**
- * @brief Use a real logger for this. This serves as an example only
- */
-void appLogger(const string& typ, const string& msg, const string& threadId)
-{
-   std::lock_guard<std::mutex> lock(std::mutex);
-   string logMessage = fmt::format("[{:s}][{:s}] {:s}", typ, threadId, msg);
-   cout <<  logMessage << endl;
-}
-
-/**
- * @brief Get the Application Name of the current application
- *
- * @param name
- * @return string
- */
-string GetApplicationName(const char *name)
-{
-   std::lock_guard<std::mutex> lock(std::mutex);
-   std::filesystem::path p(name);
-   string application_name = p.stem().string();
-   return application_name;
-}
-
-/**
- * @brief Decimal to hex code
- *
- * @param decimal
- * @return string
- */
-string DecimalToCode64(size_t decimal)
-{
-   std::lock_guard<std::mutex> lock(std::mutex);
-   const char *hexDigits = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@$";
-   string hexValue;
-
-   do
-   {
-      hexValue = hexDigits[decimal % 64] + hexValue;
-      decimal /= 64;
-   } while (decimal > 0);
-
-   return hexValue;
-}
-
-/**
- * @brief Get the file contents
- *
- * @param fullFileName
- * @return string
- */
-string GetContents(const string &fullFileName)
-{
-   std::ifstream f(fullFileName.c_str());
-   if (f)
-   {
-      string data;
-      f.seekg(0, std::ios::end);
-      data.resize(f.tellg());
-      f.seekg(0);
-      f.read(data.data(), data.size());
-      return data;
-   }
-   return "";
-}
-
-/**
- * @brief Check if directories exist, else create
- *
- * @param dirlist : list of directories to check
- * @return int
- */
-int check_directories(const vector<string>& dirlist, const string& threadId)
-{
-   // -----------------------------------------------------------------
-   // Check input dir/ output dir and create if not exists
-   // -----------------------------------------------------------------
-   for(auto d : dirlist )
-   {
-      string fullPath = filesystem::path(d);
-      if (!filesystem::exists(fullPath))
-      {
-         // Folder does not exist, create it
-         if (filesystem::create_directories(fullPath))
-         {
-            appLogger("info ","Folder created successfully: " + fullPath, threadId);
-         }
-         else
-         {
-            appLogger("error","Failed to create folder: " + fullPath, threadId);
-            return -1;
-         }
-      }
-      else
-      {
-         appLogger("info ","Folder already exists: " + fullPath, threadId);
-      }
-   }
-   return 0;
-}
-
 
 int main(int argc, char** argv)
 {
@@ -120,8 +22,8 @@ int main(int argc, char** argv)
    string         cfg_conf    = "";
 
    // Use hash and convert to string
-   std::hash<std::thread::id> hasher;
-   string mainThreadId = DecimalToCode64(hasher(std::this_thread::get_id()));
+   hash<thread::id> hasher;
+   string mainThreadId = DecimalToCode64(hasher(this_thread::get_id()));
 
    try
    {
@@ -177,7 +79,7 @@ int main(int argc, char** argv)
          cerr << "No configuration file given.\n" << desc << endl;
          return 0;
       }
-      else if (!std::filesystem::exists(cfg_conf))
+      else if (!filesystem::exists(cfg_conf))
       {
          cerr << "Configuration file '" << cfg_conf << "' does not exist.\n";
          return EXIT_FAILURE;
@@ -206,7 +108,7 @@ int main(int argc, char** argv)
          return EXIT_FAILURE;
       }
    }
-   catch(std::exception& e)
+   catch(exception& e)
    {
       appLogger("error","Unhandled Exception reached the top of main: " + string(e.what()) + ", application will now exit", mainThreadId);
       return EXIT_FAILURE;

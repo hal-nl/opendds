@@ -1,13 +1,13 @@
 /*
- * File:   vehicle_controller.hpp
+ * File:   vehicle_controller_run.hpp
  *
  * Copyright (c) 2025 Haluk Ates
  * Licensed under the MIT License.
  *
  */
 
-#ifndef VEHICLE_CONTROLLER_INCLUDED
-#define VEHICLE_CONTROLLER_INCLUDED
+#ifndef VEHICLE_CONTROLLER_RUN_INCLUDED
+#define VEHICLE_CONTROLLER_RUN_INCLUDED
 
 #include <unistd.h>
 #include <dlfcn.h>
@@ -37,16 +37,6 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/classification.hpp>
 
-using namespace std;
-using namespace libconfig;
-
-void appLogger(const string& typ, const string& msg, const string& threadId);
-string GetApplicationName(const char *name);
-string DecimalToCode64(size_t decimal);
-string GetContents(const string &fullFileName);
-int check_directories(const vector<string>& dirlist, const string& threadId);
-
-
 /**
  * @brief Starts up a multi threaded application to control vehicles by
  * sending them control commands via OpenDDS. The control commands
@@ -58,7 +48,7 @@ int check_directories(const vector<string>& dirlist, const string& threadId);
  * @param cfg
  * @return int
  */
-int run_controller(int argc, char** argv, const Config& cfg);
+int run_controller(int argc, char** argv, const libconfig::Config& cfg);
 
 
-#endif /* VEHICLE_CONTROLLER_INCLUDED */
+#endif /* VEHICLE_CONTROLLER_RUN_INCLUDED */

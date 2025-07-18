@@ -8,9 +8,10 @@
 
 #include <sys/inotify.h>
 
-#include "vehicle_controller.hpp"
+#include "helper.hpp"
 #include "vehicle_controller_notifiers.hpp"
 
+using namespace std;
 
 /**
  * @brief Threaded notifier that looks for new files in the input_dir with a specific
@@ -30,8 +31,8 @@ int run_upload_notifiers( int argc, char** argv,
    int retValue(0);
 
    // Use hash and convert to string
-   std::hash<std::thread::id> hasher;
-   string threadId = DecimalToCode64( hasher( std::this_thread::get_id() ) );
+   hash<thread::id> hasher;
+   string threadId = DecimalToCode64( hasher( this_thread::get_id() ) );
 
    /* Initialize Inotify*/
    fd = inotify_init();
@@ -75,7 +76,7 @@ int run_upload_notifiers( int argc, char** argv,
                   {
                      string filename = string(event->name);
 
-                     std::filesystem::path p(filename);
+                     filesystem::path p(filename);
                      string ext = p.extension().string();
                      if (ext == extension)
                      {
@@ -84,7 +85,7 @@ int run_upload_notifiers( int argc, char** argv,
                         string output_name = output_dir + "/" + base_name + ".out";
                         string output_content("");
 
-                        auto start_timer = std::chrono::high_resolution_clock::now();
+                        auto start_timer = chrono::high_resolution_clock::now();
 
                         try
                         {
@@ -98,7 +99,7 @@ int run_upload_notifiers( int argc, char** argv,
                            message.append(infile);
                            appLogger("info ", message, threadId);
 
-                           if (std::remove(infile.c_str()) == 0)
+                           if (remove(infile.c_str()) == 0)
                            {
                               appLogger("info ", "File deleted successfully.", threadId);
                            }
@@ -107,14 +108,14 @@ int run_upload_notifiers( int argc, char** argv,
                               appLogger("error", "Deleting file unsuccesful.", threadId);
                            }
                         }
-                        catch(std::exception& e)
+                        catch(exception& e)
                         {
                            appLogger("error","Unhandled Exception in 'Run': " + string(e.what()), threadId);
                         }
 
-                        auto end_timer = std::chrono::high_resolution_clock::now();
+                        auto end_timer = chrono::high_resolution_clock::now();
                         auto duration = end_timer - start_timer;
-                        auto i_millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration);
+                        auto i_millis = chrono::duration_cast<chrono::milliseconds>(duration);
 
                         string ss;
                         ss.append("duration: ").append(to_string(i_millis.count())).append(" ms");
@@ -127,7 +128,7 @@ int run_upload_notifiers( int argc, char** argv,
                i += EVENT_SIZE + event->len;
             }
          }
-         std::this_thread::sleep_for(std::chrono::milliseconds(10));
+         this_thread::sleep_for(chrono::milliseconds(10));
       }
    }
    /* Clean up*/

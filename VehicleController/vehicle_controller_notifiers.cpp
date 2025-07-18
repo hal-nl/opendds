@@ -8,12 +8,12 @@
 
 #include <sys/inotify.h>
 
-#include "vehicle_controller.hpp"
+#include "helper.hpp"
 #include "control_notifiers.hpp"
 #include "upload_notifiers.hpp"
 
 using namespace std;
-
+using namespace libconfig;
 
 /**
  * @brief Run the notifiers in different threads
@@ -22,11 +22,11 @@ using namespace std;
  * @param run_threads
  * @return int
  */
-int process_notifiers(int argc, char** argv, const Setting& settings, vector<std::thread>& run_threads)
+int process_notifiers(int argc, char** argv, const Setting& settings, vector<thread>& run_threads)
 {
    // Use hash and convert to string
-   std::hash<std::thread::id> hasher;
-   string mainThreadId = DecimalToCode64(hasher(std::this_thread::get_id()));
+   hash<thread::id> hasher;
+   string mainThreadId = DecimalToCode64(hasher(this_thread::get_id()));
 
    try
    {

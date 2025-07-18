@@ -18,8 +18,6 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/classification.hpp>
 
-using namespace std;
-
 bool InitializePipe(const std::string& pipeName, int buffersize, HANDLE& handle);
 
 //Pipe name format - \\<servername>\pipe\<pipename>

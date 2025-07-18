@@ -9,8 +9,6 @@
 #ifndef UPLOAD_NOTIFIERS_INCLUDED
 #define UPLOAD_NOTIFIERS_INCLUDED
 
-#include "vehicle_controller.hpp"
-
 /**
  * @brief Threaded notifier that looks for upload files in the input_dir
  * defined in the configuration file and processes this file
@@ -21,6 +19,6 @@
  * @param output_dir    Output directory of processed files
  * @return int
  */
-int run_upload_notifiers( int argc, char** argv, const string& input_dir, const string& extension, const string& output_dir);
+int run_upload_notifiers( int argc, char** argv, const std::string& input_dir, const std::string& extension, const std::string& output_dir);
 
 #endif /* UPLOAD_NOTIFIERS_INCLUDED */

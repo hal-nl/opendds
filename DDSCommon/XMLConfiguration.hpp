@@ -23,8 +23,6 @@
 #include <vector>
 #include <map>
 
-using namespace std;
-
 /**
  * Methods to read individual configuration setings and attributes from an xml file or xml string.
  *

@@ -22,11 +22,11 @@
   const long DOMAIN_MAX = 230;
 
   /** @brief Version of this IDL */
-  const string  VERSION_NUMBER = "1.0.0.0";
+  const std::string  VERSION_NUMBER = "1.0.0.0";
 
   /** @brief All Topics used in Vehicle */
-  const string  TOPIC_DATA  = "VEHICLE.DATA";
-  const string  TOPIC_RELAY = "VEHICLE.RELAY";
+  const std::string  TOPIC_DATA  = "VEHICLE.DATA";
+  const std::string  TOPIC_RELAY = "VEHICLE.RELAY";
 
   /** @brief Vehicle types*/
 
@@ -35,17 +35,17 @@
   const long VEHICLE_TYPE_COUNT = 11;
   enum VehicleEnum {Undefined, Airplane, Bicycle, Boat, Bus, Car, Helicopter, Motorcycle, Train, Truck, Van};
 
-  const string VEHICLE_UNDEFINED  = "Undefined";
-  const string VEHICLE_AIRPLANE   = "Airplane";
-  const string VEHICLE_BICYCLE    = "Bicycle";
-  const string VEHICLE_BOAT       = "Boat";
-  const string VEHICLE_BUS        = "Bus";
-  const string VEHICLE_CAR        = "Car";
-  const string VEHICLE_HELICOPTER = "Helicopter";
-  const string VEHICLE_MOTORCYCLE = "Motorcycle";
-  const string VEHICLE_TRAIN      = "Train";
-  const string VEHICLE_TRUCK      = "Truck";
-  const string VEHICLE_VAN        = "Van";
+  const std::string VEHICLE_UNDEFINED  = "Undefined";
+  const std::string VEHICLE_AIRPLANE   = "Airplane";
+  const std::string VEHICLE_BICYCLE    = "Bicycle";
+  const std::string VEHICLE_BOAT       = "Boat";
+  const std::string VEHICLE_BUS        = "Bus";
+  const std::string VEHICLE_CAR        = "Car";
+  const std::string VEHICLE_HELICOPTER = "Helicopter";
+  const std::string VEHICLE_MOTORCYCLE = "Motorcycle";
+  const std::string VEHICLE_TRAIN      = "Train";
+  const std::string VEHICLE_TRUCK      = "Truck";
+  const std::string VEHICLE_VAN        = "Van";
 
 
 #ifndef VEHICLEIDL_HPP
@@ -56,17 +56,17 @@
   #ifndef VEHICLEIDL_HPP
   @key
   #endif
-    long      index;
-    long      type;
-    long      ip_port;
-    long      ip;
-    float     velocity;
-    float     acceleration;
-    float     latitude;
-    float     longitude;
-    float     altitude;
-    char      name[VEHICLE_NAME_LEN];
-    string    uuid;
+    long          index;
+    long          type;
+    long          ip_port;
+    long          ip;
+    float         velocity;
+    float         acceleration;
+    float         latitude;
+    float         longitude;
+    float         altitude;
+    char          name[VEHICLE_NAME_LEN];
+    std::string   uuid;
   };
 
 #ifndef VEHICLEIDL_HPP
@@ -77,17 +77,16 @@
   #ifndef VEHICLEIDL_HPP
   @key
   #endif
-    long      index;
-    long      type;
-    long      ip_port;
-    long      ip;
-    float     velocity;
-    float     acceleration;
-    float     latitude;
-    float     longitude;
-    float     altitude;
-    char      name[VEHICLE_NAME_LEN];
-    string    uuid;
+    long          index;
+    long          type;
+    long          ip_port;
+    long          ip;
+    float         velocity;
+    float         acceleration;
+    float         latitude;
+    float         longitude;
+    float         altitude;
+    char          name[VEHICLE_NAME_LEN];
+    std::string   uuid;
   };
-
 };

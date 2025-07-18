@@ -29,7 +29,6 @@
 #include <dds/DCPS/WaitSet.h>
 #include <dds/DCPS/StaticIncludes.h>
 
-using namespace std;
 
 // Short alias namespace for the boost property tree.
 namespace NSPT = boost::property_tree;

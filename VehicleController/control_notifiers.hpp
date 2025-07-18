@@ -9,7 +9,7 @@
 #ifndef CONTROL_NOTIFIERS_INCLUDED
 #define CONTROL_NOTIFIERS_INCLUDED
 
-#include "vehicle_controller.hpp"
+#include "vehicle_controller_run.hpp"
 
 /**
  * @brief Threaded notifier that looks for control files in the input_dir
@@ -21,8 +21,6 @@
  * @param output_dir    Output directory of processed files
  * @return int
  */
-int run_control_notifiers(
-   int argc, char** argv,
-   const string& input_dir, const string& extension, const string& output_dir);
+int run_control_notifiers(int argc, char** argv, const std::string& input_dir, const std::string& extension, const std::string& output_dir);
 
 #endif /* CONTROL_NOTIFIERS_INCLUDED */

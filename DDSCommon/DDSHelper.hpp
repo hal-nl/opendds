@@ -33,9 +33,6 @@
 #include <mutex>
 #include <fmt/core.h>
 
-using namespace std;
-using namespace std::chrono;
-
 namespace DDSCOMMON
 {
 
@@ -51,7 +48,7 @@ namespace DDSCOMMON
     *
     * @return            The number of correct arguments
     */
-   int GetApplicationArguments(int argc, const char **argv, map<string, string> &argumentmap);
+   int GetApplicationArguments(int argc, const char **argv, std::map<std::string, std::string> &argumentmap);
 
    /**
     * Split Message into a (key, value) map: Use URL query like messages:
@@ -62,7 +59,7 @@ namespace DDSCOMMON
     * @param keyDelim      Delimiter between key and value
     * @return
     */
-   map<string, string> GetQueryParameters(const string &msg, const string &recordDelim = "&", const string &keyDelim = "=");
+   std::map<std::string, std::string> GetQueryParameters(const std::string &msg, const std::string &recordDelim = "&", const std::string &keyDelim = "=");
 
    /*
     * ------------------------------------------------------------------------------------
@@ -77,41 +74,41 @@ namespace DDSCOMMON
     *
     * i.e Is used in Publication time
     */
-   string Time2IsoString(void);
+   std::string Time2IsoString(void);
 
    /**
     * Return the current date time and microseconds as extended ISO string.
     *
     * Format "YYYY-MM-DDTHH:mm:ss.tttttt"
     */
-   string Time2ExtendedIsoString(void);
+   std::string Time2ExtendedIsoString(void);
 
    /**
     * Return the current date time and microseconds as simple string.
     *
     * Format "YYYY-MMM-DD HH:mm:ss.tttttt"
     */
-   string Time2SimpleString(void);
+   std::string Time2SimpleString(void);
 
    /**
     * Return the current time only: Format "HH:mm:ss<.ffffff>"
     * If fraction then microsecond format appended: .ffffff
     */
-   string Time2IsoStringHMS(bool fraction = false);
+   std::string Time2IsoStringHMS(bool fraction = false);
 
    /**
     * Create a unique random ID
     *
     * Format "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
     */
-   string CreateUUID(void);
+   std::string CreateUUID(void);
 
    /**
     * Get the domain id from the name (usually from XML name;
     *
     * Domains = [REAL, OBSERVED, TEST]
     */
-   int GetDomainId(const string &domainname);
+   int GetDomainId(const std::string &domainname);
 
    /**
     * Get random value between start and end
@@ -125,9 +122,9 @@ namespace DDSCOMMON
    std::string GetRandomStringLower    (unsigned int length);
    std::string GetRandomStringNumbers  (unsigned int length);
 
-   string FileGetContents(const string &fullFileName);
-   void FilePutContents(const string &fullFileName, const string &data);
-   void FileAddContents(const string &fullFileName, const string &data);
+   std::string FileGetContents(const std::string &fullFileName);
+   void FilePutContents(const std::string &fullFileName, const std::string &data);
+   void FileAddContents(const std::string &fullFileName, const std::string &data);
 
 };
 

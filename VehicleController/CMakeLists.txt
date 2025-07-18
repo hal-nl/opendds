@@ -1,6 +1,11 @@
-cmake_minimum_required (VERSION 3.22)
+cmake_minimum_required (VERSION 3.26)
 
 project(VehicleController)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 
 # #################################################################################################
 # ADD MACROS
@@ -13,7 +18,7 @@ add_definitions(
 # #################################################################################################
 # SET C++ FLAGS
 # #################################################################################################
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated -std=c++20 -fmodules-ts")
 
 
 # #################################################################################################
@@ -48,7 +53,8 @@ file(COPY resources/VehicleController.cfg        DESTINATION ${CMAKE_BINARY_DIR}
 # CREATE EXECUTABLE
 # #################################################################################################
 set (SOURCES
-   vehicle_controller.cpp
+   helper.cpp
+   main.cpp
    vehicle_controller_run.cpp
    vehicle_controller_notifiers.cpp
    control_notifiers.cpp
